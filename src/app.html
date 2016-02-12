@@ -1,0 +1,34 @@
+<template>
+  <paper-drawer-panel >
+    <!--Drawer Panel-->
+    <paper-header-panel drawer >
+      <!-- Drawer Toolbar-->
+      <paper-toolbar class="paper-header" id='sidePanel'>
+        <span>Menu</span>
+      </paper-toolbar>
+
+      <!-- Drawer Menu-->
+      <paper-menu>
+        <paper-item repeat.for="row of router.navigation" active.bind="row.isActive">
+          <a href.bind="row.href">${row.title}</a>
+        </paper-item>
+      </paper-menu>
+
+    </paper-header-panel>
+    <!--Main Panel-->
+    <paper-header-panel main>
+    <!-- Main Toolbar-->
+      <paper-toolbar class="paper-header">
+        <paper-icon-button icon="menu" tabindex="1" paper-drawer-toggle></paper-icon-button>
+        <div middleJustify class="middle title" id='title'>${router.title}</div>
+        <span if.bind="router.isNavigating"><iron-icon icon="autorenew"/></span>
+      </paper-toolbar>
+
+      <div id='content'>
+        <router-view></router-view>
+      </div>
+
+    </paper-header-panel>
+  </paper-drawer-panel>
+
+</template>

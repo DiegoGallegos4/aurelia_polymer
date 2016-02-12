@@ -1,0 +1,62 @@
+<template>
+	<paper-material elevation='2'>
+		<div class='button-container'>
+			<paper-fab icon="add" id='add'></paper-fab>
+		</div>
+		<div class='table-container'>
+			<table>
+				<caption>${heading}</caption>
+				<thead>
+					<tr>
+						<th repeat.for='key of keys'>${key}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr repeat.for='item of items'>
+						<td>${item.codigo}</td>
+						<td>${item.descripcion}</td>
+						<td>${item.categoria_id}</td>
+						<td>${item.unidad_id}</td>
+						<td>${item.cantidad}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<paper-dialog>
+			<h2 class='center-text'>Items</h2>
+			<paper-dialog-scrollable>
+				<div class='horizontal center-block'>
+					<form is='iron-form' action="" method="post" >
+						<paper-input label='Codigo'></paper-input>
+						<paper-textarea label='Descripcion'></paper-textarea>
+						<paper-input label='Cantidad'></paper-input>
+						<paper-dropdown-menu label='Categoria' name='categoria' noink no-animations>
+							<paper-listbox class="dropdown-content" >
+								<paper-item>Electrico</paper-item>
+								<paper-item>Hidrosanitario</paper-item>
+								<paper-item>HVAC</paper-item>
+							</paper-listbox>
+						</paper-dropdown-menu>
+						<paper-dropdown-menu label='Unidad' name='unidad' no-animations noink>
+							<paper-listbox class="dropdown-content">
+								<paper-item>metro</paper-item>
+								<paper-item>lance</paper-item>
+								<paper-item>caja</paper-item>
+							</paper-listbox>
+						</paper-dropdown-menu>	
+					</form>
+				</div>
+			</paper-dialog-scrollable>
+			<div class="buttons">
+				<paper-button raised dialog-dismiss>Guardar</paper-button>
+			</div>
+		</paper-dialog>
+	</paper-material>
+<script>
+	var button = document.querySelector('paper-fab');
+	var dialog = document.querySelector('paper-dialog');
+	button.addEventListener('click', function(){
+		dialog.open()
+	})
+</script>
+</template>
